@@ -1,14 +1,14 @@
 {
-  "version": "1.1.1",
-  "versionCode": 3,
+  "version": "1.1.2",
+  "versionCode": 4,
   "releaseDate": "2026-10-30",
   "apkUrl": "/downloads/al-mukhlisin.apk",
   "directDownloadUrl": "https://raw.githubusercontent.com/dwkysss/masjid-al-mukhlisin/main/public/downloads/al-mukhlisin.apk",
   "changelog": [
-    "Dukungan penuh unduh & buka file Excel langsung di HP/Android (Office, Sheets, WPS, & Share)",
-    "Fitur Infaq & Donasi QRIS Digital",
-    "Fitur Tarik ke Bawah untuk Refresh (Pull-to-Refresh)",
-    "Pemberitahuan pembaruan versi baru otomatis dalam aplikasi"
+    "Perbaikan posisi indikator Tarik ke Bawah (Pull-to-Refresh) agar tidak tertutup menu navigasi atas di HP",
+    "Uji coba mekanisme pembaruan otomatis (In-App Auto Update) v1.1.2",
+    "Peningkatan kestabilan pengunduhan APK lewat sistem Android",
+    "Dukungan penuh unduh & buka file Excel langsung di HP/Android (Office, Sheets, WPS)"
   ],
   "forceUpdate": false
 }

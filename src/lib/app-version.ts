@@ -1,6 +1,6 @@
 export const CURRENT_APP_VERSION = {
-  version: '1.1.1',
-  versionCode: 3,
+  version: '1.1.2',
+  versionCode: 4,
   releaseDate: '2026-10-30',
   name: 'Al-Mukhlisin Mobile',
 };

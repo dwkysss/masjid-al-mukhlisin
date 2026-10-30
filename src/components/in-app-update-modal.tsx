@@ -64,13 +64,22 @@ export default function InAppUpdateModal() {
     setDownloading(true);
     const downloadUrl = updateInfo.directDownloadUrl || updateInfo.apkUrl;
 
-    // Trigger download
-    const a = document.createElement('a');
-    a.href = downloadUrl;
-    a.download = 'al-mukhlisin.apk';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+    try {
+      // In mobile app / Capacitor, open via system browser to trigger Android Download Manager
+      if (typeof window !== 'undefined') {
+        const opened = window.open(downloadUrl, '_system');
+        if (!opened) {
+          window.location.href = downloadUrl;
+        }
+      }
+    } catch {
+      const a = document.createElement('a');
+      a.href = downloadUrl;
+      a.download = 'al-mukhlisin.apk';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
 
     setTimeout(() => {
       setDownloading(false);

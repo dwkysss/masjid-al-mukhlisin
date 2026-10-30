@@ -356,21 +356,19 @@ export default function JamaahPublicPage() {
             <div className="flex items-center gap-2 self-end md:self-auto">
               <button
                 onClick={() => setViewMode('cards')}
-                className={`px-3 py-2 rounded-xl text-xs font-bold transition-all ${
-                  viewMode === 'cards'
+                className={`px-3 py-2 rounded-xl text-xs font-bold transition-all ${viewMode === 'cards'
                     ? 'bg-emerald-700 text-white shadow-xs'
                     : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-                }`}
+                  }`}
               >
                 Tampilan Kartu
               </button>
               <button
                 onClick={() => setViewMode('table')}
-                className={`px-3 py-2 rounded-xl text-xs font-bold transition-all ${
-                  viewMode === 'table'
+                className={`px-3 py-2 rounded-xl text-xs font-bold transition-all ${viewMode === 'table'
                     ? 'bg-emerald-700 text-white shadow-xs'
                     : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-                }`}
+                  }`}
               >
                 Tabel Rinci
               </button>
@@ -390,11 +388,10 @@ export default function JamaahPublicPage() {
               <button
                 key={tab.id}
                 onClick={() => setSelectedPeran(tab.id)}
-                className={`px-3.5 py-1.5 rounded-full font-bold whitespace-nowrap transition-all ${
-                  selectedPeran === tab.id
+                className={`px-3.5 py-1.5 rounded-full font-bold whitespace-nowrap transition-all ${selectedPeran === tab.id
                     ? 'bg-emerald-800 text-white shadow-2xs'
                     : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-                }`}
+                  }`}
               >
                 {tab.label}
               </button>

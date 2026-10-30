@@ -129,21 +129,26 @@ export default function PullToRefresh({ onRefresh }: PullToRefreshProps) {
 
   return (
     <div
-      className="fixed left-1/2 -translate-x-1/2 z-50 pointer-events-none transition-all duration-200"
+      className="fixed left-1/2 z-[9999] pointer-events-none transition-all duration-200 ease-out"
       style={{
-        top: isRefreshing || showSuccess ? '20px' : `${Math.max(12, pullDistance * 0.8)}px`,
+        top:
+          isRefreshing || showSuccess
+            ? 'calc(env(safe-area-inset-top, 0px) + 84px)'
+            : `calc(env(safe-area-inset-top, 0px) + ${Math.max(72, 72 + pullDistance * 0.45)}px)`,
+        transform: 'translateX(-50%)',
+        opacity: isPulling || isRefreshing || showSuccess ? 1 : 0,
       }}
     >
-      <div className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#0a1f18]/95 text-white border border-emerald-500/40 shadow-2xl backdrop-blur-md text-xs font-bold transition-all">
+      <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-[#0a1f18]/95 text-white border-2 border-emerald-400/60 shadow-2xl shadow-black/50 backdrop-blur-md text-xs font-bold transition-all">
         {showSuccess ? (
           <>
-            <CheckCircle2 size={15} className="text-emerald-400 shrink-0" />
-            <span className="text-emerald-200 text-[11px]">Data Terkini Diperbarui</span>
+            <CheckCircle2 size={16} className="text-emerald-400 shrink-0" />
+            <span className="text-emerald-200 text-[11px] font-bold">Data Terkini Diperbarui</span>
           </>
         ) : isRefreshing ? (
           <>
-            <RefreshCw size={14} className="text-emerald-400 animate-spin shrink-0" />
-            <span className="text-emerald-100 text-[11px]">Memperbarui data...</span>
+            <RefreshCw size={15} className="text-emerald-400 animate-spin shrink-0" />
+            <span className="text-emerald-100 text-[11px] font-bold">Memperbarui data...</span>
           </>
         ) : (
           <>
@@ -157,7 +162,7 @@ export default function PullToRefresh({ onRefresh }: PullToRefreshProps) {
             </div>
             <span
               className={`text-[11px] transition-colors ${
-                reached ? 'text-amber-300 font-extrabold' : 'text-slate-300'
+                reached ? 'text-amber-300 font-extrabold' : 'text-slate-300 font-medium'
               }`}
             >
               {reached ? 'Lepaskan untuk memuat ulang' : 'Tarik ke bawah...'}
