@@ -3,6 +3,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import * as XLSX from 'xlsx';
+import { exportExcelFile } from '@/lib/excel-export';
 import {
   CalendarDays,
   Plus,
@@ -236,7 +237,7 @@ export default function KhutbahPage() {
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Jadwal Khutbah');
     const safeNama = (identitas?.nama || 'Al-Mukhlisin').replace(/[^a-zA-Z0-9_-]/g, '_');
-    XLSX.writeFile(wb, `Jadwal_Khutbah_${safeNama}_${new Date().toISOString().split('T')[0]}.xlsx`);
+    exportExcelFile(wb, `Jadwal_Khutbah_${safeNama}_${new Date().toISOString().split('T')[0]}.xlsx`);
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {

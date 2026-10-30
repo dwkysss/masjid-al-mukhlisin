@@ -21,6 +21,7 @@ import {
   Clock,
 } from 'lucide-react';
 import * as XLSX from 'xlsx';
+import { exportExcelFile } from '@/lib/excel-export';
 import { DataService } from '@/lib/data-service';
 import { getHijriDateString } from '@/lib/hijri';
 import {
@@ -200,7 +201,7 @@ export default function LaporanPublicPage() {
     XLSX.utils.book_append_sheet(wb, wsKas, 'Arus Kas');
 
     const safeNama = (identitas.nama || 'Al-Mukhlisin').replace(/[^a-zA-Z0-9_-]/g, '_');
-    XLSX.writeFile(wb, `Laporan_Resmi_${safeNama}_${new Date().toISOString().split('T')[0]}.xlsx`);
+    exportExcelFile(wb, `Laporan_Resmi_${safeNama}_${new Date().toISOString().split('T')[0]}.xlsx`);
   };
 
   return (

@@ -145,7 +145,7 @@ export default function UnduhApkPage() {
                   <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 mb-1">
                     <h2 className="text-xl font-bold text-white">{identitas?.nama || 'Al-Mukhlisin'} Mobile</h2>
                     <span className="bg-emerald-500/30 text-emerald-300 border border-emerald-400/40 text-[10px] font-mono px-2 py-0.5 rounded-full font-bold">
-                      v1.0.0
+                      v{CURRENT_APP_VERSION.version}
                     </span>
                   </div>
                   <p className="text-xs text-slate-300 mb-3">
@@ -159,7 +159,7 @@ export default function UnduhApkPage() {
                     </div>
                     <div className="border-l border-white/10">
                       <span className="block text-slate-400 text-[9px] sm:text-[10px]">Ukuran</span>
-                      <strong className="text-white font-semibold">~25 MB</strong>
+                      <strong className="text-white font-semibold">~16 MB</strong>
                     </div>
                     <div className="border-l border-white/10">
                       <span className="block text-slate-400 text-[9px] sm:text-[10px]">Sistem</span>

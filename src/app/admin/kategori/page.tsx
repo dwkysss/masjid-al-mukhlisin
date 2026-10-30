@@ -2,6 +2,7 @@
 
 import React, { useEffect, useMemo, useState } from 'react';
 import * as XLSX from 'xlsx';
+import { exportExcelFile } from '@/lib/excel-export';
 import {
   Tags,
   Plus,
@@ -319,7 +320,7 @@ export default function MasterKategoriPage() {
     ];
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Master Kategori');
-    XLSX.writeFile(wb, `Master_Kategori_${activeTab}_${new Date().toISOString().split('T')[0]}.xlsx`);
+    exportExcelFile(wb, `Master_Kategori_${activeTab}_${new Date().toISOString().split('T')[0]}.xlsx`);
   };
 
   return (

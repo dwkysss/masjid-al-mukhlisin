@@ -20,6 +20,7 @@ import {
   CheckCircle2,
 } from 'lucide-react';
 import * as XLSX from 'xlsx';
+import { exportExcelFile } from '@/lib/excel-export';
 import { getHijriDateString } from '@/lib/hijri';
 import { DataService } from '@/lib/data-service';
 import { ZakatQurbanItem, IdentitasMasjid } from '@/types';
@@ -144,7 +145,7 @@ export default function ZakatPublicPage() {
     XLSX.utils.book_append_sheet(wb, ws, 'Transparansi ZIS');
     const dateStr = new Date().toISOString().split('T')[0];
     const safeNama = (identitas?.nama || 'Al-Mukhlisin').replace(/[^a-zA-Z0-9_-]/g, '_');
-    XLSX.writeFile(wb, `Laporan_ZIS_${safeNama}_${dateStr}.xlsx`);
+    exportExcelFile(wb, `Laporan_ZIS_${safeNama}_${dateStr}.xlsx`);
   };
 
   return (

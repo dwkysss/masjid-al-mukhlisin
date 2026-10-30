@@ -2,6 +2,7 @@
 
 import React, { useEffect, useMemo, useState } from 'react';
 import * as XLSX from 'xlsx';
+import { exportExcelFile } from '@/lib/excel-export';
 import {
   HandHeart,
   Plus,
@@ -403,7 +404,7 @@ export default function ZakatPage() {
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Zakat & Qurban');
     const safeNama = (identitas?.nama || 'Al-Mukhlisin').replace(/[^a-zA-Z0-9_-]/g, '_');
-    XLSX.writeFile(wb, `Zakat_Qurban_${safeNama}_${new Date().toISOString().split('T')[0]}.xlsx`);
+    exportExcelFile(wb, `Zakat_Qurban_${safeNama}_${new Date().toISOString().split('T')[0]}.xlsx`);
   };
 
   const printTable = () => {

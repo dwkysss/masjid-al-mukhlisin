@@ -20,6 +20,7 @@ import {
   Calendar,
 } from 'lucide-react';
 import * as XLSX from 'xlsx';
+import { exportExcelFile } from '@/lib/excel-export';
 import { getHijriDateString } from '@/lib/hijri';
 import { DataService } from '@/lib/data-service';
 import { JamaahItem, IdentitasMasjid } from '@/types';
@@ -127,7 +128,7 @@ export default function JamaahPublicPage() {
     XLSX.utils.book_append_sheet(wb, ws, 'Data Jamaah');
     const dateStr = new Date().toISOString().split('T')[0];
     const safeNama = (identitas?.nama || 'Al-Mukhlisin').replace(/[^a-zA-Z0-9_-]/g, '_');
-    XLSX.writeFile(wb, `Data_Jamaah_${safeNama}_${dateStr}.xlsx`);
+    exportExcelFile(wb, `Data_Jamaah_${safeNama}_${dateStr}.xlsx`);
   };
 
   const getRoleBadgeStyle = (peran: string) => {

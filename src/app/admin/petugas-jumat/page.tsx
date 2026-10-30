@@ -2,6 +2,7 @@
 
 import React, { useEffect, useMemo, useState } from 'react';
 import * as XLSX from 'xlsx';
+import { exportExcelFile } from '@/lib/excel-export';
 import {
   UserCheck,
   Plus,
@@ -289,7 +290,7 @@ export default function PetugasJumatPage() {
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Petugas Jumat');
     const safeNama = (identitas?.nama || 'Al-Mukhlisin').replace(/[^a-zA-Z0-9_-]/g, '_');
-    XLSX.writeFile(wb, `Jadwal_Petugas_Jumat_${safeNama}_${new Date().toISOString().split('T')[0]}.xlsx`);
+    exportExcelFile(wb, `Jadwal_Petugas_Jumat_${safeNama}_${new Date().toISOString().split('T')[0]}.xlsx`);
   };
 
   const printTable = () => {

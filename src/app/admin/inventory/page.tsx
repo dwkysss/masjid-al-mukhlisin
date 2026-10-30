@@ -2,6 +2,7 @@
 
 import React, { useEffect, useMemo, useState } from 'react';
 import * as XLSX from 'xlsx';
+import { exportExcelFile } from '@/lib/excel-export';
 import {
   Package,
   Plus,
@@ -175,7 +176,7 @@ export default function InventoryPage() {
       ws['!cols'] = [{ wch: 6 }, { wch: 25 }, { wch: 10 }, { wch: 12 }, { wch: 20 }, { wch: 16 }];
       const wb = XLSX.utils.book_new();
       XLSX.utils.book_append_sheet(wb, ws, 'Inventaris');
-      XLSX.writeFile(wb, `Inventaris_${safeNama}_${dateStr}.xlsx`);
+      exportExcelFile(wb, `Inventaris_${safeNama}_${dateStr}.xlsx`);
     } else {
       if (dataWakaf.length === 0) {
         alert('Tidak ada data wakaf untuk diekspor');
@@ -193,7 +194,7 @@ export default function InventoryPage() {
       ws['!cols'] = [{ wch: 6 }, { wch: 14 }, { wch: 25 }, { wch: 16 }, { wch: 18 }, { wch: 30 }];
       const wb = XLSX.utils.book_new();
       XLSX.utils.book_append_sheet(wb, ws, 'Data Wakaf');
-      XLSX.writeFile(wb, `Wakaf_${safeNama}_${dateStr}.xlsx`);
+      exportExcelFile(wb, `Wakaf_${safeNama}_${dateStr}.xlsx`);
     }
   };
 

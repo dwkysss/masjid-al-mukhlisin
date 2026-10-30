@@ -18,6 +18,7 @@ import {
   QrCode,
 } from 'lucide-react';
 import * as XLSX from 'xlsx';
+import { exportExcelFile } from '@/lib/excel-export';
 import { DataService } from '@/lib/data-service';
 import { getHijriDateString } from '@/lib/hijri';
 import { KasItem, IdentitasMasjid } from '@/types';
@@ -283,7 +284,7 @@ export default function KeuanganDetailPage() {
     XLSX.utils.book_append_sheet(wb, ws, 'Buku Kas Transparansi');
     const dateStr = new Date().toISOString().split('T')[0];
     const safeNama = (identitas?.nama || 'Al-Mukhlisin').replace(/[^a-zA-Z0-9_-]/g, '_');
-    XLSX.writeFile(wb, `Buku_Kas_${safeNama}_${dateStr}.xlsx`);
+    exportExcelFile(wb, `Buku_Kas_${safeNama}_${dateStr}.xlsx`);
   };
 
   return (
