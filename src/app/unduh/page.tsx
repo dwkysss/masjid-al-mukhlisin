@@ -24,6 +24,7 @@ import {
 import MobileBottomNav from '@/components/layout/mobile-bottom-nav';
 import { DataService } from '@/lib/data-service';
 import { IdentitasMasjid } from '@/types';
+import { CURRENT_APP_VERSION } from '@/lib/app-version';
 
 export default function UnduhApkPage() {
   const [identitas, setIdentitas] = useState<IdentitasMasjid | null>(null);
@@ -68,6 +69,10 @@ export default function UnduhApkPage() {
     {
       q: 'Berapa versi Android minimum yang didukung?',
       a: 'Aplikasi mendukung sistem operasi Android 7.0 (Nougat) ke atas hingga Android 14/15 terbaru. Ukuran aplikasi sangat ringan (~25 MB) sehingga tidak membebani memori HP Anda.',
+    },
+    {
+      q: 'Bagaimana cara memperbarui aplikasi jika ada rilis atau fitur baru?',
+      a: 'Sangat mudah! Aplikasi sudah dilengkapi fitur In-App Auto Update. Begitu ada versi baru yang dirilis oleh pengurus DKM, jendela notifikasi pembaruan akan otomatis muncul di dalam aplikasi dengan tombol "Perbarui Sekarang" dalam satu sentuhan, sehingga Anda tidak perlu repot mencari link unduhan lagi.',
     },
     {
       q: 'Apakah aplikasi memerlukan koneksi internet?',
@@ -147,17 +152,21 @@ export default function UnduhApkPage() {
                     ID Kemenag: 01.4.13.04.06.000158 · Desa Lagadar
                   </p>
 
-                  <div className="grid grid-cols-3 gap-2 py-2 px-3 rounded-xl bg-black/25 border border-white/10 text-center text-[10px] sm:text-xs">
+                  <div className="grid grid-cols-4 gap-1.5 py-2 px-2.5 rounded-xl bg-black/25 border border-white/10 text-center text-[10px] sm:text-xs">
                     <div>
-                      <span className="block text-slate-400 text-[10px]">Ukuran</span>
+                      <span className="block text-slate-400 text-[9px] sm:text-[10px]">Versi</span>
+                      <strong className="text-emerald-300 font-semibold font-mono">v{CURRENT_APP_VERSION.version}</strong>
+                    </div>
+                    <div className="border-l border-white/10">
+                      <span className="block text-slate-400 text-[9px] sm:text-[10px]">Ukuran</span>
                       <strong className="text-white font-semibold">~25 MB</strong>
                     </div>
-                    <div className="border-x border-white/10">
-                      <span className="block text-slate-400 text-[10px]">Sistem</span>
+                    <div className="border-l border-white/10">
+                      <span className="block text-slate-400 text-[9px] sm:text-[10px]">Sistem</span>
                       <strong className="text-white font-semibold">Android 7+</strong>
                     </div>
-                    <div>
-                      <span className="block text-slate-400 text-[10px]">Lisensi</span>
+                    <div className="border-l border-white/10">
+                      <span className="block text-slate-400 text-[9px] sm:text-[10px]">Lisensi</span>
                       <strong className="text-emerald-300 font-semibold">Gratis</strong>
                     </div>
                   </div>

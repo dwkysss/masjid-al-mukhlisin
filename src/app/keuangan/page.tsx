@@ -65,6 +65,8 @@ export default function KeuanganDetailPage() {
   useEffect(() => {
     loadData();
 
+    window.addEventListener('masjid_refresh_requested', loadData);
+
     const now = new Date();
     setCurrentMonthPrefix(now.toISOString().slice(0, 7));
     setTodayDateStr(
@@ -76,6 +78,10 @@ export default function KeuanganDetailPage() {
       })
     );
     setHijriDateStr(getHijriDateString(now));
+
+    return () => {
+      window.removeEventListener('masjid_refresh_requested', loadData);
+    };
   }, []);
 
   // Global Financial Statistics

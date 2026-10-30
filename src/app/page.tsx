@@ -431,9 +431,15 @@ export default function HomePage() {
       });
     };
 
+    const handleGlobalRefresh = () => {
+      fetchInternalData();
+      fetchShalat();
+    };
+
     window.addEventListener('masjid_identitas_updated', handleIdentitasUpdated);
     window.addEventListener('masjid_saran_updated', handleSaranUpdated);
     window.addEventListener('masjid_kategori_updated', handleKategoriUpdated);
+    window.addEventListener('masjid_refresh_requested', handleGlobalRefresh);
 
     const fetchShalat = async () => {
       try {
@@ -453,6 +459,7 @@ export default function HomePage() {
       window.removeEventListener('masjid_identitas_updated', handleIdentitasUpdated);
       window.removeEventListener('masjid_saran_updated', handleSaranUpdated);
       window.removeEventListener('masjid_kategori_updated', handleKategoriUpdated);
+      window.removeEventListener('masjid_refresh_requested', handleGlobalRefresh);
     };
   }, []);
 

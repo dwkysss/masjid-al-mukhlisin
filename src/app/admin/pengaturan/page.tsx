@@ -17,10 +17,13 @@ import {
   RotateCcw,
   Image as ImageIcon,
   QrCode,
+  Smartphone,
+  Sparkles,
 } from 'lucide-react';
 import AdminLayout from '@/components/layout/admin-layout';
 import { DataService } from '@/lib/data-service';
 import { IdentitasMasjid } from '@/types';
+import { CURRENT_APP_VERSION } from '@/lib/app-version';
 
 export default function PengaturanPage() {
   const [identitas, setIdentitas] = useState<IdentitasMasjid>({
@@ -644,7 +647,7 @@ export default function PengaturanPage() {
             <div className="flex items-center gap-3 pt-1">
               <button
                 type="submit"
-                className="px-5 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold rounded-xl shadow-md transition flex items-center gap-2"
+                className="px-5 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold rounded-xl shadow-md transition flex items-center gap-2 cursor-pointer"
               >
                 <Save size={14} /> Simpan Kata Sandi Baru
               </button>
@@ -655,6 +658,44 @@ export default function PengaturanPage() {
               )}
             </div>
           </form>
+        </div>
+
+        {/* ============================= */}
+        {/* SECTION 4: PEMBARUAN & VERSI APLIKASI */}
+        {/* ============================= */}
+        <div className="bg-white rounded-2xl sm:rounded-3xl border border-slate-100 shadow-sm p-4 sm:p-6 md:p-8">
+          <div className="flex items-center gap-2 mb-2">
+            <Smartphone size={18} className="text-emerald-700" />
+            <h2 className="font-black text-slate-800 text-base">Pembaruan & Versi Aplikasi</h2>
+          </div>
+          <p className="text-xs text-slate-500 mb-5">
+            Sistem secara otomatis memeriksa ketersediaan pembaruan saat aplikasi dibuka di HP. Anda juga dapat memicu pemeriksaan manual kapan saja.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
+            <div className="space-y-1">
+              <div className="flex items-center gap-2">
+                <span className="font-bold text-slate-800 text-sm">Al-Mukhlisin Mobile</span>
+                <span className="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-mono font-bold border border-emerald-200">
+                  v{CURRENT_APP_VERSION.version} (Build {CURRENT_APP_VERSION.versionCode})
+                </span>
+              </div>
+              <p className="text-[11px] text-slate-500">
+                Rilis: {CURRENT_APP_VERSION.releaseDate} · Didukung In-App Auto Update & Pull-to-Refresh
+              </p>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => {
+                window.dispatchEvent(new CustomEvent('masjid_check_update_manually'));
+              }}
+              className="flex items-center gap-2 px-4 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-xs font-bold shadow-sm transition active:scale-95 cursor-pointer"
+            >
+              <RefreshCw size={14} />
+              <span>Periksa Pembaruan Sekarang</span>
+            </button>
+          </div>
         </div>
       </div>
     </AdminLayout>
